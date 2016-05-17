@@ -4,7 +4,8 @@ FROM centos
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     
 # Install packages
-RUN yum clean all && yum install -y httpd || true
+RUN yum clean all
+RUN yum install -y httpd || true
 RUN yum clean all && yum install -y graphite-web expect && yum clean all
 COPY setup-graphite-db.exp /root/setup-graphite-db.exp
 RUN chmod 755 /root/setup-graphite-db.exp && /root/setup-graphite-db.exp root calvin
